@@ -60,7 +60,14 @@ def get_artists_spotify():
             artist = track['track']['artists'][0]['name']
             artists.add(artist)
     return sorted(artists)
-        
+
+def get_album_genre(token, album_id):
+    url = f'https://api.spotify.com/v1/albums/{album_id}'
+    headers = get_auth_header(token)
+    result = get(url, headers=headers)
+    json_result = json.loads(result.content)['genres']
+    return json_result
+
 if __name__ == "__main__":
     artists = get_artists_spotify()
     for artist in artists:
@@ -68,10 +75,10 @@ if __name__ == "__main__":
         result = search_for_artists(token, artist)
         artist_id = result['id']
         songs = get_songs_by_artists(token, artist_id)
-        
-        # for idx, song in enumerate(songs):
-        #     print(f"    {idx + 1}. {song['name']}")
-                
-        # print(f"{artist}: {result['genres']}")
-        
-        # Get artist's birthdate
+        print(f"{artist}: {result['genres']}")
+        for idx, song in enumerate(songs):
+            print(f"    {idx + 1}. {song['name']}:")
+            print(f"        Release date: {song['album']['release_date']}")
+            print(f"        Album: {song['album']['name']}")
+            print(f"        Popularity: {song['popularity']}")
+            print(f"        Album Genre: {get_album_genre(token, song['album']['id'])}") # Próbwałem wszystkiego i nie wiem o co chodzi ale nie da sie wziac tego gatunku naprawde XD
