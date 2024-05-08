@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="strategy3">
+    <form action="/strategy3" method="POST">
+    
+        <h1>How many songs do you want in your playlist?</h2>
+        <label for="limit">Limit:</label>
+        <input type="number" id="limit" name="limit" required value="{{ limit or '10' }}"><br>
+    
+        <h2>Chose the target country (your country is default):</h3>
+        <input type="radio" id="market_poland" name="market" value="PL"{% if 'PL' in market %}checked{% endif %}>
+        <label for="market-poland">PL</label><br>
+
+        <input type="radio" id="market_usa" name="market" value="US"{% if 'US' in market %}checked{% endif %}>
+        <label for="market-usa">US</label><br>
+    
+        <input type="radio" id="market_uk" name="market" value="GB"{% if 'GB' in market %}checked{% endif %}>
+        <label for="market-uk">GB</label><br>
+
+        <h3>Your playlist name:</h4>
+        <input type="text" id="playlist_name" name="playlist_name" required value="{{ playlist_name or 'NewPlaylist' }}"><br>
+
+        <h4>Your playlist description:</h5>
+        <input type="text" style="width: 500px;" id="playlist_description" name="playlist_description" required value="{{ playlist_description or 'Playlist created by PlayMe' }}"><br>
+
+        <button type="submit" id="generate_button">Create a playlist</button>
+    </form>
+    {% if playlist %}
+        <div class="playlist-link">
+            <h2>Generated Playlist:</h2>
+            <a href="{{ playlist }}" target="_blank">{{ playlist }}</a>
+        </div>
+    {% endif %}
+    {% if error_message %}
+        <div class="error-message">
+            <p>{{ error_message }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selected Songs</title>
+</head>
+<body>
+  <h1>Selected Songs</h1>
+
+  <ul>
+    {% for song in songs %}
+    <li>{{ song }}</li>
+    {% endfor %}
+  </ul>
+
+  <a href="/">Go back</a>
+</body>
+</html>

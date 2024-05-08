@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content">
+    <h1>CREATE YOUR PLAYLIST</h1>
+    <p>Creating great playlists is now easier than ever before!</p>
+    <div>
+      <form action="/spotify_playlist" method="POST">
+        <button type="submit">Spotify playlist</button>
+      </form>
+    </div>
+</div>
+{% endblock content %}

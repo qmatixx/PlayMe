@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="menu">
+    <h1>Choose a strategy for the playlist creator</h1>
+    <form action="/strategy_picker" method="POST">
+        <input type="radio" id="strategy1" name="options" value="strategy1" class="radio-option">
+        <label for="strategy1">Mix of the most popular songs from selected years</label><br>
+
+        <input type="radio" id="strategy2" name="options" value="strategy2" class="radio-option">
+        <label for="strategy2">Mix of the songs from selected genres</label><br>
+
+        <input type="radio" id="strategy3" name="options" value="strategy3" class="radio-option">
+        <label for="strategy3">Mix based on your last listened tracks</label><br>
+
+        <input type="radio" id="strategy4" name="options" value="strategy4" class="radio-option">
+        <label for="strategy4">Mix of the songs from selected artists</label><br>
+
+        <button type="submit" value="Submit">Confirm</button>
+    </form>
+</div>
+{% endblock content %}

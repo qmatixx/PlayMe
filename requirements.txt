@@ -1,0 +1,10 @@
+flask
+python-dotenv
+requests
+spotipy
+flask-sqlalchemy
+flask-bcrypt
+flask-wtf
+flask_login
+flask-mail
+email_validator
